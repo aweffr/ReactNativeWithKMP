@@ -14,6 +14,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		224F293C2C2D0CF500B6A551 /* RNShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F293B2C2D0CF500B6A551 /* RNShared.swift */; };
 		224F293E2C2D0D4E00B6A551 /* RNShared.m in Sources */ = {isa = PBXBuildFile; fileRef = 224F293D2C2D0D4E00B6A551 /* RNShared.m */; };
+		226F2B852C2DBC5500F3A876 /* RNMockBlocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F2B842C2DBC5500F3A876 /* RNMockBlocking.swift */; };
+		226F2B872C2DBC6E00F3A876 /* RNMockBlocking.m in Sources */ = {isa = PBXBuildFile; fileRef = 226F2B862C2DBC6E00F3A876 /* RNMockBlocking.m */; };
 		6132EF182BDFF13200BBE14D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6132EF172BDFF13200BBE14D /* PrivacyInfo.xcprivacy */; };
 		7699B88040F8A987B510C191 /* libPods-ReactNativeWithKMP-ReactNativeWithKMPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ReactNativeWithKMP-ReactNativeWithKMPTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -43,6 +45,8 @@
 		224F293A2C2D0CF500B6A551 /* ReactNativeWithKMP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactNativeWithKMP-Bridging-Header.h"; sourceTree = "<group>"; };
 		224F293B2C2D0CF500B6A551 /* RNShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNShared.swift; sourceTree = "<group>"; };
 		224F293D2C2D0D4E00B6A551 /* RNShared.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNShared.m; sourceTree = "<group>"; };
+		226F2B842C2DBC5500F3A876 /* RNMockBlocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNMockBlocking.swift; sourceTree = "<group>"; };
+		226F2B862C2DBC6E00F3A876 /* RNMockBlocking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNMockBlocking.m; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-ReactNativeWithKMP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeWithKMP.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeWithKMP/Pods-ReactNativeWithKMP.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ReactNativeWithKMP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeWithKMP.release.xcconfig"; path = "Target Support Files/Pods-ReactNativeWithKMP/Pods-ReactNativeWithKMP.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-ReactNativeWithKMP-ReactNativeWithKMPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeWithKMP-ReactNativeWithKMPTests.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeWithKMP-ReactNativeWithKMPTests/Pods-ReactNativeWithKMP-ReactNativeWithKMPTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				224F293B2C2D0CF500B6A551 /* RNShared.swift */,
 				224F293A2C2D0CF500B6A551 /* ReactNativeWithKMP-Bridging-Header.h */,
 				224F293D2C2D0D4E00B6A551 /* RNShared.m */,
+				226F2B842C2DBC5500F3A876 /* RNMockBlocking.swift */,
+				226F2B862C2DBC6E00F3A876 /* RNMockBlocking.m */,
 			);
 			name = ReactNativeWithKMP;
 			sourceTree = "<group>";
@@ -368,8 +374,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226F2B872C2DBC6E00F3A876 /* RNMockBlocking.m in Sources */,
 				224F293E2C2D0D4E00B6A551 /* RNShared.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				226F2B852C2DBC5500F3A876 /* RNMockBlocking.swift in Sources */,
 				224F293C2C2D0CF500B6A551 /* RNShared.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
