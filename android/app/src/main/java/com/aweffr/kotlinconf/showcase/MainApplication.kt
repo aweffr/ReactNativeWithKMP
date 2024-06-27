@@ -1,6 +1,7 @@
 package com.aweffr.kotlinconf.showcase
 
 import android.app.Application
+import com.aweffr.kotlinconf.mockblocking.RNMockBlockingPackage
 import com.aweffr.kotlinconf.shared.RNSharedPackage
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
@@ -20,6 +21,7 @@ class MainApplication : Application(), ReactApplication {
         override fun getPackages(): List<ReactPackage> =
             PackageList(this).packages.apply {
               add(RNSharedPackage())
+              add(RNMockBlockingPackage())
             }
 
         override fun getJSMainModuleName(): String = "index"

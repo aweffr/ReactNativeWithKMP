@@ -3,6 +3,8 @@ import { SafeAreaView, View, Text, FlatList, Button } from "react-native";
 import { RNShared, Todo } from "./utils/RNShared.ts";
 import TodoItem, { todoKeyExtractor } from "./components/TodoItem.tsx";
 import Toast from "react-native-toast-message";
+import Carousel from "./components/Carousel.tsx";
+import { mockBlockingOnJS, mockBlockingOnNative } from "./utils/mock-blocking.ts";
 
 function App() {
   const [todoList, setTodoList] = useState<Todo[]>([]);
@@ -51,6 +53,18 @@ function App() {
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <View>
         <Text>RNShared Available: {String(RNShared.isAvailable())}</Text>
+      </View>
+      <View style={{ marginVertical: 10 }}>
+        <Text>动画模式: Native</Text>
+        <Carousel useNativeDriver={true} />
+      </View>
+      <View style={{ marginVertical: 10 }}>
+        <Text>动画模式: JS</Text>
+        <Carousel useNativeDriver={false} />
+      </View>
+      <View style={{ flexDirection: "row" }}>
+        <Button title="阻塞JS" onPress={() => mockBlockingOnJS(3000)} />
+        <Button title="阻塞Native" onPress={() => mockBlockingOnNative(3000)} />
       </View>
       <View style={{ flexDirection: "row" }}>
         <Button title="清空" onPress={clearTodoList} />
