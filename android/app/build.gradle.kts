@@ -101,6 +101,7 @@ dependencies {
     implementation("com.facebook.react:react-android")
     implementation("com.facebook.react:flipper-integration")
     implementation("com.facebook.react:hermes-android")
+    implementation(project(":shared"))
 }
 
 apply(from = file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))

@@ -6,6 +6,7 @@ val applyNativeModules: Closure<Any> = extra.get("applyNativeModulesSettingsGrad
 applyNativeModules(settings)
 
 include(":app")
+include(":shared")
 
 includeBuild("../node_modules/@react-native/gradle-plugin")
 
@@ -35,5 +36,3 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-
-include(":shared")
