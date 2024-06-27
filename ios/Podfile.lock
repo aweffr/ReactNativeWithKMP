@@ -1015,7 +1015,7 @@ PODS:
     - React-jsi (= 0.73.8)
     - React-logger (= 0.73.8)
     - React-perflogger (= 0.73.8)
-  - shared (0.1.0)
+  - shared (0.1.1)
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
 
@@ -1222,7 +1222,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: f35f76612c1b15ebd155d65fd460e66274572c54
   React-utils: 4cc2ba652f5df1c8f0461d4ae9e3ee474c1354ea
   ReactCommon: 512222a2c036e9a7d1489d4c888aac178dfb0f3c
-  shared: f2732c872cbca46db5b884f1befedfdf0087445b
+  shared: e702b47fe89fc04616d3a156c3f2f127c5006fed
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 2a16e58450c48e110211dae1159fb114bbcdcfc0
 
