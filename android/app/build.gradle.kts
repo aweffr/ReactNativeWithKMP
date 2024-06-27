@@ -1,6 +1,10 @@
-apply plugin: "com.android.application"
-apply plugin: "org.jetbrains.kotlin.android"
-apply plugin: "com.facebook.react"
+import groovy.lang.Closure
+
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("com.facebook.react")
+}
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -51,55 +55,43 @@ react {
     // hermesFlags = ["-O", "-output-source-map"]
 }
 
-/**
- * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
- */
-def enableProguardInReleaseBuilds = false
-
-/**
- * The preferred build flavor of JavaScriptCore (JSC)
- *
- * For example, to use the international variant, you can use:
- * `def jscFlavor = 'org.webkit:android-jsc-intl:+'`
- *
- * The international variant includes ICU i18n library and necessary data
- * allowing to use e.g. `Date.toLocaleString` and `String.localeCompare` that
- * give correct results when using with locales other than en-US. Note that
- * this variant is about 6MiB larger per architecture than default.
- */
-def jscFlavor = 'org.webkit:android-jsc:+'
+val enableProguardInReleaseBuilds = false
+val jscFlavor = "org.webkit:android-jsc:+"
 
 android {
-    ndkVersion rootProject.ext.ndkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-    compileSdk rootProject.ext.compileSdkVersion
+    ndkVersion = rootProject.extra["ndkVersion"] as String
+    buildToolsVersion = rootProject.extra["buildToolsVersion"] as String
+    compileSdk = rootProject.extra["compileSdkVersion"] as Int
 
-    namespace "com.aweffr.kotlinconf.showcase"
+    namespace = "com.aweffr.kotlinconf.showcase"
     defaultConfig {
-        applicationId "com.aweffr.kotlinconf.showcase"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        applicationId = "com.aweffr.kotlinconf.showcase"
+        minSdk = rootProject.extra["minSdkVersion"] as Int
+        targetSdk = rootProject.extra["targetSdkVersion"] as Int
+        versionCode = 1
+        versionName = "1.0.0"
     }
+
     signingConfigs {
-        debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
         }
     }
+
     buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
         }
-        release {
-            // Caution! In production, you need to generate your own keystore file.
-            // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = enableProguardInReleaseBuilds
+            proguardFiles(
+                getDefaultProguardFile("proguard-android.txt"),
+                file("proguard-rules.pro")
+            )
         }
     }
 }
@@ -108,12 +100,9 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
     implementation("com.facebook.react:flipper-integration")
-
-    if (hermesEnabled.toBoolean()) {
-        implementation("com.facebook.react:hermes-android")
-    } else {
-        implementation jscFlavor
-    }
+    implementation("com.facebook.react:hermes-android")
 }
 
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply(from = file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
+val applyNativeModulesAppBuildGradle: Closure<Any> = extra.get("applyNativeModulesAppBuildGradle") as Closure<Any>
+applyNativeModulesAppBuildGradle(project)
