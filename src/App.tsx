@@ -23,6 +23,7 @@ function App() {
   const onPressHttp = useCallback(() => {
     clearTodoList();
     RNShared.getHttpTodos().then((todos) => {
+      console.log(`getHttpTodos finish! todos count: ${todos.length}`);
       setTodoList(todos);
     });
   }, [clearTodoList]);
@@ -43,14 +44,18 @@ function App() {
           text2: payload.message,
           visibilityTime: 1500,
         });
-        setTodoList((prev) => [...payload.todos, ...prev]);
+        setTodoList((prev) => {
+          const next = [...payload.todos, ...prev];
+          next.sort((a, b) => b.id - a.id);
+          return next;
+        });
       },
     );
     return () => sub.remove();
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white", paddingHorizontal: 5 }}>
       <View>
         <Text>RNShared Available: {String(RNShared.isAvailable())}</Text>
       </View>
@@ -74,6 +79,7 @@ function App() {
       </View>
       <FlatList
         style={{ flex: 1 }}
+        windowSize={100}
         keyExtractor={todoKeyExtractor}
         data={todoList}
         renderItem={({ item }: { item: Todo }) => {

@@ -29,7 +29,6 @@ function Carousel({ useNativeDriver }: { useNativeDriver: boolean }) {
         }),
       ]).start(() => startAnimation()); // Loop the animation
     };
-
     startAnimation();
   }, [useNativeDriver, ballAnimation, ballShift]);
 
