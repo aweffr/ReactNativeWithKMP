@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { SafeAreaView, View, Text, FlatList, Button } from "react-native";
+import { SafeAreaView, View, Text, ScrollView, Button } from "react-native";
 import { RNShared, Todo } from "./utils/RNShared.ts";
 import TodoItem, { todoKeyExtractor } from "./components/TodoItem.tsx";
 import Toast from "react-native-toast-message";
@@ -77,15 +77,11 @@ function App() {
         <Button title="http" onPress={onPressHttp} />
         <Button title="event" onPress={onPressEvent} />
       </View>
-      <FlatList
-        style={{ flex: 1 }}
-        windowSize={100}
-        keyExtractor={todoKeyExtractor}
-        data={todoList}
-        renderItem={({ item }: { item: Todo }) => {
-          return <TodoItem todo={item} />;
-        }}
-      />
+      <ScrollView style={{ flex: 1 }}>
+        {todoList.map((todo) => (
+          <TodoItem todo={todo} key={todoKeyExtractor(todo)} />
+        ))}
+      </ScrollView>
     </SafeAreaView>
   );
 }
